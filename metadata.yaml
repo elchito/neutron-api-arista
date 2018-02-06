@@ -1,0 +1,30 @@
+"name": "neutron-api-arista"
+"summary": "OpenStack Networking - Arista mechanism driver"
+"maintainer": "Omar Lara <omar.lara@canonical.com>"
+"description": |
+  Neutron is a virtual network service for OpenStack, and a part of
+  Netstack. Just like OpenStack Nova provides an API to dynamically
+  request and configure virtual servers, Neutron provides an API to
+  dynamically request and configure virtual networks. These networks
+  connect "interfaces" from other OpenStack services (e.g., virtual NICs
+  from Nova VMs). The Neutron API supports extensions to provide
+  advanced network capabilities (e.g., QoS, ACLs, network monitoring,
+  etc.)
+  .
+  This charm configures the neutron-api service with the Arista ML2 driver
+  SDN solution.
+"tags":
+- "openstack"
+"series":
+- "xenial"
+- "artful"
+- "trusty"
+"requires":
+  "container":
+    "interface": "juju-info"
+    "scope": "container"
+"provides":
+  "neutron-plugin-api-subordinate":
+    "interface": "neutron-plugin-api-subordinate"
+    "scope": "container"
+"subordinate": !!bool "true"

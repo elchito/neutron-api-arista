@@ -1,0 +1,45 @@
+"options":
+  "vlan-ranges":
+    "type": "string"
+    "default": "default:1000:2000"
+    "description": |
+      Space-delimited list of Neutron network-provider & vlan-id-ranges using
+      the following format "<provider>:<start>:<end> ...".
+  "overlay-network-type":
+    "default": "vlan"
+    "type": "string"
+    "description": |
+      Overlay network types to use, valid options include:
+        vlan
+      Multiple types can be provided in the future - field is space delimited.
+  "security-groups":
+    "default": !!bool "true"
+    "type": "boolean"
+    "description": "Enable managed security groups."
+  "arista-version":
+    "default": "2017.2.2"
+    "type": "string"
+    "description": "Arista Driver version"
+  "pip-proxy":
+    "type": "string"
+    "default": "None"
+    "description": |
+      Proxy address to install python modules behind a proxy
+  "eapi-host":
+    "default": ""
+    "type": "string"
+    "description": |
+      Set a comma separated list of IP addresses for each CVX instance. 
+      If CVX has been deployed in a highly available (HA) cluster, 
+      specify each instance IP separated by a comma.
+  "eapi-username":
+    "default": ""
+    "type": "string"
+    "description": |
+      EOS command API username. This is required field.
+  "eapi-password":
+    "default": ""
+    "type": "string"
+    "description": |
+      EOS command API password. This is required field.
+
