@@ -4,10 +4,14 @@ This charm provides the Arista ML2 Mechanism neutron plugin for OpenStack clouds
 
 # Usage
 
-This charm is subordinate to the **neutron-api** charm. 
+This charm is subordinate to the **neutron-api** charm.
+
+You must set manage-neutron-plugin-legacy-mode in your neutron-api
+charm's config to False before deploying this charm.
 
 Instruction for deploying the charm:
 
+    juju config neutron-api manage-neutron-plugin-legacy-mode=False
     juju deploy neutron-api-arista
     juju add-relation neutron-api neutron-api-arista
 
