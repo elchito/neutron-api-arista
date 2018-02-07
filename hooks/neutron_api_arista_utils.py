@@ -17,10 +17,6 @@ from charmhelpers.contrib.python.packages import pip_install
 import neutron_api_arista_context
 import charmhelpers.core.hookenv as hookenv
 
-from charmhelpers.fetch import (
-    apt_install,
-)
-
 TEMPLATES = 'templates/'
 CHARM_LIB_DIR = os.environ.get('CHARM_DIR', '') + "/lib/"
 ARISTA_VERSION = "2017.2.2"
