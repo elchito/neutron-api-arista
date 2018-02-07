@@ -77,3 +77,8 @@ def install_networking_arista():
 def restart_service():
     cmd = ['service', 'neutron-server', 'restart']
     subprocess.check_call(cmd)
+
+def ensure_pkg():
+    cmd = ['apt', 'install', '-y', 'python-apt']
+    subprocess.check_call(cmd)
+
