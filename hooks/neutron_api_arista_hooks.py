@@ -18,11 +18,6 @@ import sys
 import uuid
 import os
 
-from charmhelpers.fetch import (
-    apt_install,
-    apt_update,
-)
-
 from neutron_api_arista_utils import (
     register_configs,
     determine_packages,
@@ -30,6 +25,12 @@ from neutron_api_arista_utils import (
     restart_service,
     ensure_pkg,
 )
+
+try:
+	from charmhelpers.fetch import (apt_install, apt_update,)
+except ImportError:
+	ensure_pkg()
+	from charmhelpers.fetch import (apt_install, apt_update,)
 
 hooks = Hooks()
 CONFIGS = register_configs()
