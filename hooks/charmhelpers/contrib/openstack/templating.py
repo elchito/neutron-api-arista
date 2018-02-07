@@ -20,7 +20,8 @@ from charmhelpers.fetch import apt_install, apt_update
 from charmhelpers.core.hookenv import (
     log,
     ERROR,
-    INFO
+    INFO,
+    TRACE
 )
 from charmhelpers.contrib.openstack.utils import OPENSTACK_CODENAMES
 
@@ -28,7 +29,10 @@ try:
     from jinja2 import FileSystemLoader, ChoiceLoader, Environment, exceptions
 except ImportError:
     apt_update(fatal=True)
-    apt_install('python-jinja2', fatal=True)
+    if six.PY2:
+        apt_install('python-jinja2', fatal=True)
+    else:
+        apt_install('python3-jinja2', fatal=True)
     from jinja2 import FileSystemLoader, ChoiceLoader, Environment, exceptions
 
 
@@ -77,8 +81,10 @@ def get_loader(templates_dir, os_release):
             loaders.insert(0, FileSystemLoader(tmpl_dir))
         if rel == os_release:
             break
+    # demote this log to the lowest level; we don't really need to see these
+    # lots in production even when debugging.
     log('Creating choice loader with dirs: %s' %
-        [l.searchpath for l in loaders], level=INFO)
+        [l.searchpath for l in loaders], level=TRACE)
     return ChoiceLoader(loaders)
 
 
@@ -207,7 +213,10 @@ class OSConfigRenderer(object):
             # if this code is running, the object is created pre-install hook.
             # jinja2 shouldn't get touched until the module is reloaded on next
             # hook execution, with proper jinja2 bits successfully imported.
-            apt_install('python-jinja2')
+            if six.PY2:
+                apt_install('python-jinja2')
+            else:
+                apt_install('python3-jinja2')
 
     def register(self, config_file, contexts):
         """
@@ -263,6 +272,8 @@ class OSConfigRenderer(object):
             raise OSConfigException
 
         _out = self.render(config_file)
+        if six.PY3:
+            _out = _out.encode('UTF-8')
 
         with open(config_file, 'wb') as out:
             out.write(_out)
