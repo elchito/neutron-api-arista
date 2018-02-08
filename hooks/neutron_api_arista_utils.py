@@ -2,8 +2,12 @@ import os
 import subprocess
 import json
 
+# Install python-apt, before we have import troubles
+subprocess.check_call(['apt', 'install', '-y', 'python-apt'])
+
 from collections import OrderedDict
 from charmhelpers.contrib.openstack.utils import os_release
+
 from charmhelpers.contrib.openstack import templating
 from charmhelpers.core.hookenv import (
     config,
@@ -73,8 +77,3 @@ def install_networking_arista():
 def restart_service():
     cmd = ['service', 'neutron-server', 'restart']
     subprocess.check_call(cmd)
-
-def ensure_pkg():
-    cmd = ['apt', 'install', '-y', 'python-apt']
-    subprocess.check_call(cmd)
-

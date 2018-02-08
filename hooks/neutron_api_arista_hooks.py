@@ -23,14 +23,9 @@ from neutron_api_arista_utils import (
     determine_packages,
     install_networking_arista,
     restart_service,
-    ensure_pkg,
 )
 
-try:
-	from charmhelpers.fetch import (apt_install, apt_update,)
-except ImportError:
-	ensure_pkg()
-	from charmhelpers.fetch import (apt_install, apt_update,)
+from charmhelpers.fetch import (apt_install, apt_update,)
 
 hooks = Hooks()
 CONFIGS = register_configs()
@@ -78,7 +73,6 @@ def neutron_api_joined(rid=None):
 @hooks.hook('install')
 def install():
     status_set('maintenance', 'Executing pre-install')
-    ensure_pkg()
     apt_update()
     pkgs = determine_packages()
     for pkg in pkgs:
