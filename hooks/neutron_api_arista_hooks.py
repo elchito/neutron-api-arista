@@ -29,7 +29,10 @@ from charmhelpers.fetch import (apt_install, apt_update,)
 
 hooks = Hooks()
 CONFIGS = register_configs()
+OWNER = "root"
+GROUP = "neutron"
 
+ML2_CONFIG_ARISTA = '/etc/neutron/plugins/ml2/ml2_conf_arista.ini'
 
 @hooks.hook('config-changed')
 def config_changed():
@@ -47,7 +50,10 @@ def config_changed():
         restart_service()
         status_set('active', 'Unit is ready')
     CONFIGS.write_all()
-
+    uid = pwd.getpwnam(OWNER).pw_uid
+    gid = grp.getgrnam(GROUP).gr_gid
+    realpath = ML2_CONFIG_ARISTA
+    os.chown(realpath, uid, gid)
 
 @hooks.hook('neutron-plugin-api-subordinate-relation-joined')
 def neutron_api_joined(rid=None):
