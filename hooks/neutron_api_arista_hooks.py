@@ -13,10 +13,12 @@ from charmhelpers.core.hookenv import (
     status_set,
 
 )
+import grp
 import json
 import sys
 import uuid
 import os
+import pwd
 
 from neutron_api_arista_utils import (
     register_configs,
