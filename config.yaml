@@ -47,4 +47,9 @@
     "type": "string"
     "description": |
       Name of the region. Usually required.
+  "service-plugins":
+    "default": "router,firewall,metering,neutron_lbaas.services.loadbalancer.plugin.LoadBalancerPluginv2"
+    "type": "string"
+    "description": |
+      Override of princple charm config settings.
 
