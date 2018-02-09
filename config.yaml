@@ -42,4 +42,9 @@
     "type": "string"
     "description": |
       EOS command API password. This is required field.
+  "region-name":
+    "default": "RegionOne"
+    "type": "string"
+    "description": |
+      Name of the region. Usually required.
 

@@ -44,7 +44,8 @@ def config_changed():
         charm_config.changed('security-groups') or
         charm_config.changed('eapi-host') or
         charm_config.changed('eapi-username') or
-        charm_config.changed('eapi-password')):
+        charm_config.changed('eapi-password') or
+        charm_config.changed('region-name')):
         status_set('maintenance', 'Applying changes to configuration')
     if (charm_config.changed('arista-version') or charm_config.changed('pip-proxy')):
         status_set('maintenance', 'Upgrading pip packages')

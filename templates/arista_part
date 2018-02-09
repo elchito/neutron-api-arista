@@ -1,0 +1,5 @@
+[ml2_arista]
+eapi_host = {{ eapi_host }}
+eapi_username = {{ eapi_username }}
+eapi_password = {{ eapi_password }}
+region_name = {{ region_name }}
