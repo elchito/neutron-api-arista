@@ -51,5 +51,10 @@
     "default": "router,firewall,metering,neutron_lbaas.services.loadbalancer.plugin.LoadBalancerPluginv2"
     "type": "string"
     "description": |
-      Override of princple charm config settings.
+      Override of principle charm config settings.
+  "extension-drivers":
+    "default": "port_security"
+    "type": "string"
+    "description": |
+      Override of principle charm config settings.
 

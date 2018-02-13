@@ -35,4 +35,5 @@ class AristaMl2Context(context.OSContextGenerator):
         ctxt['overlay_network_type'] = get_overlay_network_type()
         ctxt['security_groups'] = config('security-groups')
         ctxt['network_vlan_ranges'] = config('vlan-ranges')
+        ctxt['extension_drivers'] = config('extension-drivers')
         return ctxt
