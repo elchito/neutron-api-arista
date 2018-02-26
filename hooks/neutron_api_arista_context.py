@@ -25,6 +25,7 @@ class AristaMl2Context(context.OSContextGenerator):
                 'eapi_username': config('eapi-username'),
                 'eapi_password': config('eapi-password'),
                 'region_name': config('region-name'),
+                'api_type': config('api-type'),
                 'arista_version': config('arista-version')}
         return ctxt
 

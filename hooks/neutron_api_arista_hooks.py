@@ -45,6 +45,7 @@ def config_changed():
         charm_config.changed('eapi-host') or
         charm_config.changed('eapi-username') or
         charm_config.changed('eapi-password') or
+        charm_config.changed('api-type') or
         charm_config.changed('service-plugins') or
         charm_config.changed('extension-drivers') or
         charm_config.changed('region-name')):

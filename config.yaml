@@ -42,6 +42,14 @@
     "type": "string"
     "description": |
       EOS command API password. This is required field.
+  "api-type":
+    "default:" "EAPI"
+    "type": "string"
+    "description": |
+      Tells the plugin to use a sepcific API interfaces to communicate
+      with CVX. Valid options are:
+      EAPI - Use EOS' extensible API.
+      JSON - Use EOS' JSON/REST API.
   "region-name":
     "default": "RegionOne"
     "type": "string"
